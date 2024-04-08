@@ -1,0 +1,39 @@
+:root {
+  --main-bg: hsl(225, 40%, 18%);
+  --main-text-color: hsl(179, 44%, 55%);
+  --bubble-bg: hsl(213, 30%, 32%);
+  --bubble-border: hsl(179, 44%, 55%);
+  --tooltip-bg: hsla(225, 39%, 18%, 0.8);
+
+  --dark-color-opacity: rgba(0, 0, 0, 0.65);
+  --text-color-light: hsl(47, 61%, 85%);
+  --text-color-dark: hsl(49, 11%, 29%);
+  --mobilemenu-bg: hsl(49, 11%, 29%);
+  --dark-bg: hsl(49, 11%, 29%);
+  --light-bg: hsl(0, 0%, 100%);
+  --content-text-color-light: hsl(0, 0%, 100%);
+  --content-text-color-dark: hsl(49, 11%, 29%);
+  --content-image-headline-color: hsl(0, 0%, 100%);
+
+  --primary-button-bg: hsl(49, 11%, 29%);
+  --primary-button-bg-hover: hsl(49, 11%, 19%);
+  --secondary-button-bg: transparent;
+  --secondary-button-bg-hover: hsl(47, 61%, 85%);
+  --secondary-button-border: hsl(0, 0%, 100%);
+  --secondary-button-border-hover: hsl(47, 61%, 85%);
+  --secondary-button-text-color: hsl(0, 0%, 100%);
+  --secondary-button-text-color-hover: hsl(49, 11%, 29%);
+
+  --dark-color-mobile-gallery-opacity: rgba(0, 0, 0, 0.4);
+
+  --all-color: hsl(0, 0%, 50%);
+  --react-color: hsl(207, 46%, 63%);
+  --mongo-db-color: hsl(120, 56%, 22%);
+  --express-color: hsl(0, 0%, 0%);
+  --node-color: hsl(123, 100%, 32%);
+  --sass-color: hsl(310, 57%, 59%);
+  --javascript-color: hsl(50, 100%, 33%);
+  --css-color: hsl(228, 78%, 52%);
+  --website-color: hsl(14, 100%, 63%);
+  --web-app-color: hsl(291, 19%, 52%);
+}

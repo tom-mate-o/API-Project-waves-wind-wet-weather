@@ -100,7 +100,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>waves, wind & wet weather?!</h1>
+      <h1>
+        waves,
+        <br /> wind &<br /> wet weather?!
+      </h1>
 
       <div className="locationContainer">
         <p>Texel</p>
@@ -110,7 +113,7 @@ function App() {
       <div className="wavesContainer">
         <h2 id="waves">waves</h2>
         <div className="bubbleContainer">
-          <p>wave height - last & next 24h</p>
+          <p>wave height - past & next 24h</p>
           <div className="chartContainer">
             <MyLineChart
               data={waveChartData}
@@ -120,18 +123,25 @@ function App() {
             />
           </div>
           <div className="dataContainer">
-            <div className="data">
-              <Icons.PiWaves />
-              <h3>
-                {' '}
-                {data && waveData.daily && waveData.daily.wave_height_max[1]} m
-              </h3>
-              <p>max wave height ( {date} )</p>
+            <div className="dataContainer__data">
+              <Icons.PiWaves className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3>
+                  {' '}
+                  {data &&
+                    waveData.daily &&
+                    waveData.daily.wave_height_max[1]}{' '}
+                  m
+                </h3>
+                <p>max wave height ( {date} )</p>
+              </div>
             </div>
-            <div className="data">
-              <Icons.IoCompassOutline />
-              <h3>{waveDirection}</h3>
-              <p>dominant wave direction ( {date} )</p>
+            <div className="dataContainer__data">
+              <Icons.IoCompassOutline className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3>{waveDirection}</h3>
+                <p>dominant wave direction ( {date} )</p>
+              </div>
             </div>
           </div>
         </div>
@@ -140,28 +150,32 @@ function App() {
       <div className="windContainer">
         <h2 id="wind">wind</h2>
         <div className="bubbleContainer">
-          <p>wave height - last & next 24h</p>
+          <p>wind speed - past & next 24h</p>
           <div className="chartContainer">
             <MyLineChart
-              data={waveChartData}
-              legend={'wave height'}
-              unit={'m'}
-              dataKey={'waveHeight'}
+              data={windChartData}
+              legend={'wind speed'}
+              unit={'km/h'}
+              dataKey={'windSpeed'}
             />
           </div>
           <div className="dataContainer">
-            <div className="data">
-              <Icons.WiStrongWind />
-              <h3>
-                {' '}
-                {data && data.daily && data.daily.wind_speed_10m_max[1]} km/h
-              </h3>
-              <p>max wind speed ( {date} )</p>
+            <div className="dataContainer__data">
+              <Icons.WiStrongWind className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3>
+                  {' '}
+                  {data && data.daily && data.daily.wind_speed_10m_max[1]} km/h
+                </h3>
+                <p>max wind speed ( {date} )</p>
+              </div>
             </div>
-            <div className="data">
-              <Icons.IoCompassOutline />
-              <h3>{windDirection}</h3>
-              <p>dominant wind direction ( {date} )</p>
+            <div className="dataContainer__data">
+              <Icons.IoCompassOutline className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3>{windDirection}</h3>
+                <p>dominant wind direction ( {date} )</p>
+              </div>
             </div>
           </div>
         </div>
@@ -170,7 +184,7 @@ function App() {
       <div className="rainContainer">
         <h2 id="rain">rain</h2>
         <div className="bubbleContainer">
-          <p>wave height - last & next 24h</p>
+          <p>precipitation - past & next 24h</p>
           <div className="chartContainer">
             {' '}
             <MyBarChart
@@ -181,21 +195,25 @@ function App() {
             />
           </div>
           <div className="dataContainer">
-            <div className="data">
-              <Icons.WiRain />
-              <h3>
-                {' '}
-                {data && data.daily && data.daily.precipitation_sum[1]} mm
-              </h3>
-              <p>precipitation sum ( {date} )</p>
+            <div className="dataContainer__data">
+              <Icons.WiRain className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3>
+                  {' '}
+                  {data && data.daily && data.daily.precipitation_sum[1]} mm
+                </h3>
+                <p>precipitation sum ( {date} )</p>
+              </div>
             </div>
-            <div className="data">
-              <Icons.WiTime4 />
-              <h3>
-                {' '}
-                {data && data.daily && data.daily.precipitation_sum[1]} hrs
-              </h3>
-              <p>precipitation hours ( {date} )</p>
+            <div className="dataContainer__data">
+              <Icons.WiTime4 className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3>
+                  {' '}
+                  {data && data.daily && data.daily.precipitation_sum[1]} hrs
+                </h3>
+                <p>precipitation hours ( {date} )</p>
+              </div>
             </div>
           </div>
         </div>
@@ -204,7 +222,7 @@ function App() {
       <div className="temperatureContainer">
         <h2 id="temperature">temperature</h2>
         <div className="bubbleContainer">
-          <p>wave height - last & next 24h</p>
+          <p>temperature - past & next 24h</p>
           <div className="chartContainer">
             <MyLineChart
               data={temperatureChartData}
@@ -214,20 +232,28 @@ function App() {
             />
           </div>
           <div className="dataContainer">
-            <div className="data">
-              <Icons.WiThermometer />
-              <h3>
-                max {data && data.daily && data.daily.temperature_2m_max[1]} °C
-              </h3>
-              <p>highest temperature ( {date} )</p>
+            <div className="dataContainer__data">
+              <Icons.WiThermometer className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3>
+                  max {data && data.daily && data.daily.temperature_2m_max[1]}{' '}
+                  °C
+                </h3>
+                <p>highest temperature ( {date} )</p>
+              </div>
             </div>
-            <div className="data">
-              <Icons.WiThermometer />
-              <h3>
-                {' '}
-                min {data && data.daily && data.daily.temperature_2m_min[1]} °C
-              </h3>
-              <p>lowest temperature ( {date} )</p>
+            <div className="dataContainer__data">
+              <Icons.WiThermometer className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3>
+                  {' '}
+                  min {data &&
+                    data.daily &&
+                    data.daily.temperature_2m_min[1]}{' '}
+                  °C
+                </h3>
+                <p>lowest temperature ( {date} )</p>
+              </div>
             </div>
           </div>
         </div>
@@ -235,30 +261,42 @@ function App() {
 
       <div className="sunContainer">
         <h2 id="sun">sun</h2>
-        <div className="dataContainer">
-          <div className="data">
-            <Icons.WiSunrise />
-            <h3>
-              {' '}
-              {data && data.daily && data.daily.sunrise[1].split('T')[1]}
-            </h3>
-            <p>todays sunrise</p>
-          </div>
-          <div className="data">
-            <Icons.WiSunset />
-            <h3> {data && data.daily && data.daily.sunset[1].split('T')[1]}</h3>
-            <p>todays sunset</p>
-          </div>
-          <div className="data">
-            <Icons.WiDaySunny />
-
-            <h3>{sunshineDuration}</h3>
-            <p>todays sunshine duration</p>
-          </div>
-          <div className="data">
-            <Icons.BsSunglasses />
-            <h3> {data && data.daily && data.daily.uv_index_max[1]}</h3>
-            <p>todays UV-index</p>
+        <div className="bubbleContainer">
+          <div className="dataContainer">
+            <div className="dataContainer__data">
+              <Icons.WiSunrise className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3>
+                  {' '}
+                  {data && data.daily && data.daily.sunrise[1].split('T')[1]}
+                </h3>
+                <p>todays sunrise</p>
+              </div>
+            </div>
+            <div className="dataContainer__data">
+              <Icons.WiSunset className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3>
+                  {' '}
+                  {data && data.daily && data.daily.sunset[1].split('T')[1]}
+                </h3>
+                <p>todays sunset</p>
+              </div>
+            </div>
+            <div className="dataContainer__data">
+              <Icons.WiDaySunny className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3>{sunshineDuration}</h3>
+                <p>todays sunshine duration</p>
+              </div>
+            </div>
+            <div className="dataContainer__data">
+              <Icons.BsSunglasses className="dataContainer__icon" />
+              <div className="dataContainer__text">
+                <h3> {data && data.daily && data.daily.uv_index_max[1]}</h3>
+                <p>todays UV-index</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,58 @@
+@use '../util/' as u;
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--main-bg);
+  font-family: u.$font;
+  overflow-x: hidden;
+  color: var(--main-text-color);
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+header ul,
+footer ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style-type: none;
+  }
+}
+
+img {
+  display: block; // Global block style for the img tag, to remove the space below the image
+  width: 100%; // globale width 100% for all images. better to set the image-size sperately for each, to avoid wierd behavior. (flex)
+  height: auto; // also for the height
+}
+
+.visually-hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+
+  &:focus {
+    left: 0;
+    width: auto;
+    height: auto;
+    background-color: #fff;
+    padding: 0.5rem;
+    border: 1px solid;
+  }
+}

@@ -1,0 +1,24 @@
+@use '../util/' as u;
+
+.dataContainer {
+  display: flex;
+  flex-direction: column;
+  gap: u.rem(10);
+
+  &__icon {
+    width: u.rem(35);
+    height: u.rem(35);
+    display: flex;
+  }
+
+  &__data {
+    display: flex;
+    flex-direction: row;
+    gap: u.rem(10);
+    align-items: center;
+  }
+
+  &__text {
+    text-align: left;
+  }
+}

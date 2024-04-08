@@ -1,0 +1,11 @@
+@use '../util/' as u;
+
+.chartContainer {
+  margin-inline-start: u.rem(-5);
+  margin-block-start: u.rem(15);
+  width: 100%;
+
+  tspan {
+    font-size: xx-small;
+  }
+}
