@@ -16,15 +16,36 @@
     display: flex;
     flex-direction: row;
     gap: u.rem(10);
-    align-items: center;
-  }
-
-  &__text {
     text-align: left;
-  }
+    align-items: center;
 
-  &__date {
-    margin-block-start: u.rem(3);
-    font-size: u.rem(10);
+    &__stacked {
+      display: flex;
+      flex-direction: column;
+      gap: u.rem(10);
+    }
+
+    &__sun {
+      display: flex;
+      flex-direction: column;
+      gap: u.rem(10);
+    }
+
+    @include u.breakpoint('medium') {
+      &__sun {
+        display: flex;
+        flex-direction: row;
+        gap: u.rem(50);
+      }
+    }
+
+    &__text {
+      text-align: left;
+    }
+
+    &__date {
+      margin-block-start: u.rem(3);
+      font-size: u.rem(10);
+    }
   }
 }

@@ -33,7 +33,7 @@ export default function MyBarChart({ data, dataKey, legend, unit }) {
           tick={{ fill: 'lightgrey' }}
           type="category"
           domain={['auto', 'auto']}
-          tickFormatter={(time) => `${new Date(time).getHours()}:00`}
+          tickFormatter={(time) => `${new Date(time).getHours()}h`}
         />
         <YAxis
           stroke="#1C2541"
@@ -41,7 +41,15 @@ export default function MyBarChart({ data, dataKey, legend, unit }) {
           tickFormatter={(value) => `${value}${unit}`}
         />
         <Tooltip
-          labelFormatter={(value) => `${value.toString().padStart(2, '0')}:00`}
+          labelFormatter={(value) => {
+            const date = new Date(value);
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Monate sind von 0-11
+            const year = date.getFullYear();
+            const hour = date.getHours().toString().padStart(2, '0');
+            const minute = date.getMinutes().toString().padStart(2, '0');
+            return `${day} ${month} ${year} - ${hour}:${minute}`;
+          }}
           formatter={(value) => [`${value} ${unit}`, legend]}
           contentStyle={{ backgroundColor: 'var(--tooltip-bg)' }}
         />

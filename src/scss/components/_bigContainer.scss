@@ -12,6 +12,10 @@
 
     .contentContainer {
       flex-basis: calc(50% - #{u.rem(20)});
+
+      &.wide {
+        flex-basis: calc(100% - #{u.rem(20)});
+      }
     }
   }
 }

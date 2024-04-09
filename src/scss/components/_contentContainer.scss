@@ -14,13 +14,15 @@
     transition: all 0.3s ease-in-out;
   }
 
-  &:hover {
-    transform: scale(1.03);
+  @include u.breakpoint('medium') {
+    &:hover {
+      transform: scale(1.01);
 
-    h2 {
-      color: var(--hover);
+      h2 {
+        color: var(--hover);
 
-      text-shadow: none;
+        text-shadow: none;
+      }
     }
   }
 }

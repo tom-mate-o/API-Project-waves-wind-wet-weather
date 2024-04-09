@@ -6,6 +6,10 @@
   padding-block-end: u.rem(20);
   gap: u.rem(5);
 
+  @include u.breakpoint('medium') {
+    padding-block-end: u.rem(30);
+  }
+
   &__tom {
     font-size: u.rem(12);
   }

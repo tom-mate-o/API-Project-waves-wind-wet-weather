@@ -12,6 +12,7 @@ function App() {
   const [windChartData, setWindChartData] = useState([]);
   const [precipitationChartData, setPrecipitationChartData] = useState([]);
   const [temperatureChartData, setTemperatureChartData] = useState([]);
+  const [isWide, setIsWide] = useState(true);
 
   useEffect(() => {
     fetch(
@@ -99,6 +100,10 @@ function App() {
     date = DateTime.fromISO(data.daily.time[1]).toFormat('dd. LLL yy');
   }
 
+  const handleClick = () => {
+    setIsWide(!isWide);
+  };
+
   return (
     <div className="wrapper App">
       <header className="header">
@@ -124,18 +129,29 @@ function App() {
           </div>
         </div>
 
-        <div className="header__locationContainer">
-          <Icons.FiMapPin className="header__locationContainer__icon" />
-          <div className="header__locationContainer__text">
-            <h3>Texel</h3>
-            <p>53°04'59.9"N 4°49'59.9"E</p>
+        <div className="header__containerAndButton">
+          <div className="header__locationContainer">
+            <Icons.FiMapPin className="header__locationContainer__icon" />
+            <div className="header__locationContainer__text">
+              <h3>Texel</h3>
+              <p>53°04'59.9"N 4°49'59.9"E</p>
+            </div>
           </div>
+          <button onClick={handleClick}>
+            {isWide ? (
+              <Icons.TbViewportWide className="icon" />
+            ) : (
+              <Icons.TbViewportNarrow className="icon" />
+            )}
+          </button>
         </div>
       </header>
 
       <div className="bigContainer">
-        <div className="contentContainer wavesContainer">
-          <h2 id="waves">waves</h2>
+        <div
+          className={`contentContainer wavesContainer ${isWide ? '' : 'wide'}`}
+        >
+          <h2 id="waves">waves</h2>{' '}
           <div className="bubbleContainer">
             <h4>wave height - past & next 24h</h4>
             <div className="chartContainer">
@@ -177,7 +193,9 @@ function App() {
           </div>
         </div>
 
-        <div className="contentContainer windContainer">
+        <div
+          className={`contentContainer windContainer ${isWide ? '' : 'wide'}`}
+        >
           <h2 id="wind">wind</h2>
           <div className="bubbleContainer">
             <h4>wind speed - past & next 24h</h4>
@@ -220,7 +238,9 @@ function App() {
           </div>
         </div>
 
-        <div className="contentContainer rainContainer">
+        <div
+          className={`contentContainer rainContainer ${isWide ? '' : 'wide'}`}
+        >
           <h2 id="rain">rain</h2>
           <div className="bubbleContainer">
             <h4>precipitation - past & next 24h</h4>
@@ -264,7 +284,11 @@ function App() {
           </div>
         </div>
 
-        <div className="contentContainer temperatureContainer">
+        <div
+          className={`contentContainer wtemperatureContainer ${
+            isWide ? '' : 'wide'
+          }`}
+        >
           <h2 id="temperature">temperature</h2>
           <div className="bubbleContainer">
             <h4>temperature - past & next 24h</h4>
@@ -310,42 +334,48 @@ function App() {
           </div>
         </div>
 
-        <div className="contentContainer sunContainer">
+        <div className="contentContainer sunContainer wide">
           <h2 id="sun">sun</h2>
           <div className="bubbleContainer">
-            <div className="dataContainer">
-              <div className="dataContainer__data">
-                <Icons.WiSunrise className="dataContainer__icon" />
-                <div className="dataContainer__text">
-                  <h3>
-                    {' '}
-                    {data && data.daily && data.daily.sunrise[1].split('T')[1]}
-                  </h3>
-                  <p>todays sunrise</p>
+            <div className="dataContainer__data__sun">
+              <div className="dataContainer__data__stacked">
+                <div className="dataContainer__data">
+                  <Icons.WiSunrise className="dataContainer__icon" />
+                  <div className="dataContainer__text">
+                    <h3>
+                      {' '}
+                      {data &&
+                        data.daily &&
+                        data.daily.sunrise[1].split('T')[1]}
+                    </h3>
+                    <p>todays sunrise</p>
+                  </div>
+                </div>
+                <div className="dataContainer__data">
+                  <Icons.WiSunset className="dataContainer__icon" />
+                  <div className="dataContainer__text">
+                    <h3>
+                      {' '}
+                      {data && data.daily && data.daily.sunset[1].split('T')[1]}
+                    </h3>
+                    <p>todays sunset</p>
+                  </div>
                 </div>
               </div>
-              <div className="dataContainer__data">
-                <Icons.WiSunset className="dataContainer__icon" />
-                <div className="dataContainer__text">
-                  <h3>
-                    {' '}
-                    {data && data.daily && data.daily.sunset[1].split('T')[1]}
-                  </h3>
-                  <p>todays sunset</p>
+              <div className="dataContainer__data__stacked">
+                <div className="dataContainer__data">
+                  <Icons.WiDaySunny className="dataContainer__icon" />
+                  <div className="dataContainer__text">
+                    <h3>{sunshineDuration}</h3>
+                    <p>todays sunshine duration</p>
+                  </div>
                 </div>
-              </div>
-              <div className="dataContainer__data">
-                <Icons.WiDaySunny className="dataContainer__icon" />
-                <div className="dataContainer__text">
-                  <h3>{sunshineDuration}</h3>
-                  <p>todays sunshine duration</p>
-                </div>
-              </div>
-              <div className="dataContainer__data">
-                <Icons.BsSunglasses className="dataContainer__icon" />
-                <div className="dataContainer__text">
-                  <h3> {data && data.daily && data.daily.uv_index_max[1]}</h3>
-                  <p>todays UV-index</p>
+                <div className="dataContainer__data">
+                  <Icons.BsSunglasses className="dataContainer__icon" />
+                  <div className="dataContainer__text">
+                    <h3> {data && data.daily && data.daily.uv_index_max[1]}</h3>
+                    <p>todays UV-index</p>
+                  </div>
                 </div>
               </div>
             </div>

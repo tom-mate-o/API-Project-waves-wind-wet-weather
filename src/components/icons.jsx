@@ -11,3 +11,6 @@ export {
 } from 'react-icons/wi';
 export { BsSunglasses } from 'react-icons/bs';
 export { FiMapPin } from 'react-icons/fi';
+export { LuMinimize2 } from 'react-icons/lu';
+export { TbViewportWide } from 'react-icons/tb';
+export { TbViewportNarrow } from 'react-icons/tb';
