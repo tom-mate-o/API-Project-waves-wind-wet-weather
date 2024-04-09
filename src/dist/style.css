@@ -254,6 +254,7 @@ a:active {
 
 .wrapper {
   width: min(100% - 3rem, 75rem);
+  box-sizing: border-box;
   margin-inline: auto;
   padding-block-start: 0.9375rem;
 }
