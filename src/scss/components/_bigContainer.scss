@@ -5,4 +5,13 @@
   flex-direction: column;
   gap: u.rem(20);
   padding-inline: u.rem(20);
+
+  @include u.breakpoint('large') {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    div {
+      flex-basis: calc(50% - #{u.rem(20)});
+    }
+  }
 }

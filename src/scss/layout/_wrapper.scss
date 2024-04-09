@@ -1,7 +1,7 @@
 @use '../util/' as u;
 
 .wrapper {
-  width: min(100% - u.rem(48), u.rem(800));
+  width: min(100% - u.rem(48), u.rem(1200));
   margin-inline: auto; // center the grid
   padding-block-start: u.rem(15);
 
@@ -10,7 +10,7 @@
   }
 
   @include u.breakpoint(medium) {
-    width: min(100% - u.rem(48), u.rem(800));
+    width: min(100% - u.rem(48), u.rem(1200));
     padding-block-start: u.rem(60);
   }
 

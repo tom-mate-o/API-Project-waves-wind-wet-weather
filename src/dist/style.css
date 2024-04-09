@@ -230,7 +230,7 @@ a:active {
 }
 
 .wrapper {
-  width: min(100% - 3rem, 50rem);
+  width: min(100% - 3rem, 75rem);
   margin-inline: auto;
   padding-block-start: 0.9375rem;
 }
@@ -241,7 +241,7 @@ a:active {
 }
 @media (min-width: 43.75em) {
   .wrapper {
-    width: min(100% - 3rem, 50rem);
+    width: min(100% - 3rem, 75rem);
     padding-block-start: 3.75rem;
   }
 }
@@ -307,6 +307,11 @@ a:active {
   align-items: center;
   padding-inline: 1.25rem;
 }
+@media (min-width: 43.75em) {
+  .header {
+    align-items: flex-start;
+  }
+}
 .header__logoContainer {
   width: 100%;
   margin-bottom: 1.875rem;
@@ -324,8 +329,13 @@ a:active {
   flex-direction: row;
   align-items: center;
   width: 100%;
-  margin-bottom: 0.3125rem;
+  margin-bottom: 1.25rem;
   gap: 15px;
+}
+@media (min-width: 43.75em) {
+  .header__locationContainer {
+    width: 394px;
+  }
 }
 .header__locationContainer__icon {
   width: 1.5rem;
@@ -340,6 +350,7 @@ a:active {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
 }
 .contentContainer h2 {
   color: var(--main-bg);
@@ -351,6 +362,15 @@ a:active {
   flex-direction: column;
   gap: 1.25rem;
   padding-inline: 1.25rem;
+}
+@media (min-width: 56.25em) {
+  .bigContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .bigContainer div {
+    flex-basis: calc(50% - 1.25rem);
+  }
 }
 
 .footer {

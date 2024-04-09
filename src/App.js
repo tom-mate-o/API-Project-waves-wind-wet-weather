@@ -100,8 +100,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="wrapper header">
+    <div className="wrapper App">
+      <header className="header">
         <div className="header__logoContainer">
           <h1>waves</h1>
           <h1>wind &</h1>
@@ -117,7 +117,7 @@ function App() {
         </div>
       </header>
 
-      <div className="wrapper bigContainer">
+      <div className="bigContainer">
         <div className="contentContainer wavesContainer">
           <h2 id="waves">waves</h2>
           <div className="bubbleContainer">
