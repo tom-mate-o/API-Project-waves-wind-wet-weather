@@ -175,7 +175,7 @@ function App() {
                   </h3>
                   <p>
                     max wave height{' '}
-                    <p className="dataContainer__date">( {date} )</p>
+                    <span className="dataContainer__date">( {date} )</span>
                   </p>
                 </div>
               </div>
@@ -185,7 +185,7 @@ function App() {
                   <h3>{waveDirection}</h3>
                   <p>
                     dominant wave direction{' '}
-                    <p className="dataContainer__date">( {date} )</p>
+                    <span className="dataContainer__date">( {date} )</span>
                   </p>
                 </div>
               </div>
@@ -220,7 +220,7 @@ function App() {
                   </h3>
                   <p>
                     max wind speed{' '}
-                    <p className="dataContainer__date">( {date} )</p>
+                    <span className="dataContainer__date">( {date} )</span>
                   </p>
                 </div>
               </div>
@@ -230,7 +230,7 @@ function App() {
                   <h3>{windDirection}</h3>
                   <p>
                     dominant wind direction{' '}
-                    <p className="dataContainer__date">( {date} )</p>
+                    <span className="dataContainer__date">( {date} )</span>
                   </p>
                 </div>
               </div>
@@ -263,7 +263,7 @@ function App() {
                   </h3>
                   <p>
                     precipitation sum{' '}
-                    <p className="dataContainer__date">( {date} )</p>
+                    <span className="dataContainer__date">( {date} )</span>
                   </p>
                 </div>
               </div>
@@ -276,7 +276,7 @@ function App() {
                   </h3>
                   <p>
                     precipitation hours{' '}
-                    <p className="dataContainer__date">( {date} )</p>
+                    <span className="dataContainer__date">( {date} )</span>
                   </p>
                 </div>
               </div>
@@ -310,7 +310,7 @@ function App() {
                   </h3>
                   <p>
                     highest temperature{' '}
-                    <p className="dataContainer__date">( {date} )</p>
+                    <span className="dataContainer__date">( {date} )</span>
                   </p>
                 </div>
               </div>
@@ -326,7 +326,7 @@ function App() {
                   </h3>
                   <p>
                     lowest temperature{' '}
-                    <p className="dataContainer__date">( {date} )</p>
+                    <span className="dataContainer__date">( {date} )</span>
                   </p>
                 </div>
               </div>
