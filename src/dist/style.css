@@ -22,6 +22,10 @@ body.no-scroll {
   overflow: hidden;
 }
 
+.App {
+  overflow-x: hidden;
+}
+
 header ul,
 footer ul {
   margin: 0;
@@ -297,7 +301,7 @@ a:active {
 }
 
 .chartContainer {
-  margin-inline-start: 0rem;
+  margin-inline-start: -0.78125rem;
   margin-block-start: 0.9375rem;
   width: 100%;
 }
@@ -417,6 +421,7 @@ a:active {
 .header__containerAndButton {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1.25rem;
   margin-bottom: 1.25rem;

@@ -76,6 +76,7 @@
   &__containerAndButton {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     gap: u.rem(20);
     margin-bottom: u.rem(20);
