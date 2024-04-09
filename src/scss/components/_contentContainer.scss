@@ -1,0 +1,13 @@
+@use '../util/' as u;
+
+.contentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  h2 {
+    color: var(--main-bg);
+    text-shadow: 1px 0 var(--h-stroke), 0 1px var(--h-stroke2),
+      -1px 0 var(--h-stroke), 0 -1px var(--h-stroke);
+  }
+}

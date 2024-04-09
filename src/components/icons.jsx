@@ -10,3 +10,4 @@ export {
   WiDaySunny,
 } from 'react-icons/wi';
 export { BsSunglasses } from 'react-icons/bs';
+export { FiMapPin } from 'react-icons/fi';

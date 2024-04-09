@@ -1,0 +1,42 @@
+@use '../util/' as u;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: u.rem(20);
+
+  &__logoContainer {
+    width: 100%;
+    margin-bottom: u.rem(30);
+    h1 {
+      text-align: left;
+      color: var(--main-bg);
+      text-shadow: 1px 0 var(--h-stroke), 0 1px var(--h-stroke2),
+        -1px 0 var(--h-stroke), 0 -1px var(--h-stroke);
+    }
+  }
+
+  &__locationContainer {
+    border-radius: 15px;
+    box-shadow: 1px 0 var(--h-stroke2), 0 1px var(--h-stroke2),
+      -1px 0 var(--h-stroke), 0 -1px var(--h-stroke);
+    padding: u.rem(15);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-bottom: u.rem(5);
+    gap: 15px;
+
+    &__icon {
+      width: u.rem(24);
+      height: u.rem(24);
+      display: flex;
+    }
+
+    &__text {
+      text-align: left;
+    }
+  }
+}

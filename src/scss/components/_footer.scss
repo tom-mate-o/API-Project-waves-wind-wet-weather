@@ -1,0 +1,20 @@
+@use '../util/' as u;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding-block-end: u.rem(20);
+  gap: u.rem(5);
+
+  &__tom {
+    font-size: u.rem(12);
+  }
+
+  &__credit {
+    font-size: u.rem(10);
+  }
+
+  a {
+    color: var(--link-color);
+  }
+}

@@ -5,11 +5,16 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
+  ReferenceLine,
 } from 'recharts';
 
 export default function MyLineChart({ data, legend, unit, dataKey }) {
+  const currentDate = new Date();
+  const currentHour = ('0' + currentDate.getHours()).slice(-2);
+  const currentDay = currentDate.toISOString().slice(0, 10);
+  const referenceTime = `${currentDay}T${currentHour}:00`;
+
   return (
     <ResponsiveContainer width="100%" height={300}>
       <LineChart
@@ -26,7 +31,9 @@ export default function MyLineChart({ data, legend, unit, dataKey }) {
           dataKey="time"
           stroke="#1C2541"
           tick={{ fill: 'lightgrey' }}
-          tickFormatter={(hour) => `${hour.toString().padStart(2, '0')}:00`}
+          type="category"
+          domain={['auto', 'auto']}
+          tickFormatter={(time) => `${new Date(time).getHours()}:00`}
         />
         <YAxis
           stroke="#1C2541"
@@ -50,6 +57,8 @@ export default function MyLineChart({ data, legend, unit, dataKey }) {
           animationDuration={2500}
           animationEasing="ease-out"
         />
+
+        <ReferenceLine x={referenceTime} stroke="white" />
       </LineChart>
     </ResponsiveContainer>
   );

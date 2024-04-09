@@ -3,10 +3,13 @@
 .bubbleContainer {
   background-color: var(--bubble-bg);
   border-radius: 0px 15px 15px 15px;
-  border: 1px solid var(--bubble-border);
+
+  box-shadow: 1px 0 var(--h-stroke2), 0 1px var(--h-stroke2),
+    -1px 0 var(--h-stroke), 0 -1px var(--h-stroke);
   padding: u.rem(15);
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
+  margin-block-start: u.rem(5);
 }

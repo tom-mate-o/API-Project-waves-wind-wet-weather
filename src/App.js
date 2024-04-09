@@ -22,21 +22,22 @@ function App() {
         setData(data);
         if (data && data.hourly) {
           const newChartData = data.hourly.time.map((time, index) => ({
-            time: Number(new Date(time).getHours()),
+            // time: Number(new Date(time).getHours()),
+            time: time,
             windSpeed: data.hourly.wind_speed_10m[index],
           }));
           setWindChartData(newChartData);
         }
         if (data && data.hourly) {
           const newChartData = data.hourly.time.map((time, index) => ({
-            time: Number(new Date(time).getHours()),
+            time: time,
             precipitation: data.hourly.precipitation[index],
           }));
           setPrecipitationChartData(newChartData);
         }
         if (data && data.daily) {
           const newChartData = data.hourly.time.map((time, index) => ({
-            time: Number(new Date(time).getHours()),
+            time: time,
             temperature: data.hourly.temperature_2m[index],
           }));
           setTemperatureChartData(newChartData);
@@ -51,7 +52,7 @@ function App() {
         if (waveData && waveData.hourly) {
           setWaveData(waveData);
           const newChartData = waveData.hourly.time.map((time, index) => ({
-            time: Number(new Date(time).getHours()),
+            time: time,
             waveHeight: waveData.hourly.wave_height[index],
           }));
           setWaveChartData(newChartData);
@@ -100,206 +101,231 @@ function App() {
 
   return (
     <div className="App">
-      <h1>
-        waves,
-        <br /> wind &<br /> wet weather?!
-      </h1>
+      <header className="wrapper header">
+        <div className="header__logoContainer">
+          <h1>waves</h1>
+          <h1>wind &</h1>
+          <h1> wet weather?!</h1>
+        </div>
 
-      <div className="locationContainer">
-        <p>Texel</p>
-        <p>53°04'59.9"N 4°49'59.9"E</p>
-      </div>
-
-      <div className="wavesContainer">
-        <h2 id="waves">waves</h2>
-        <div className="bubbleContainer">
-          <p>wave height - past & next 24h</p>
-          <div className="chartContainer">
-            <MyLineChart
-              data={waveChartData}
-              legend={'wave height'}
-              unit={'m'}
-              dataKey={'waveHeight'}
-            />
+        <div className="header__locationContainer">
+          <Icons.FiMapPin className="header__locationContainer__icon" />
+          <div className="header__locationContainer__text">
+            <h3>Texel</h3>
+            <p>53°04'59.9"N 4°49'59.9"E</p>
           </div>
-          <div className="dataContainer">
-            <div className="dataContainer__data">
-              <Icons.PiWaves className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3>
-                  {' '}
-                  {data &&
-                    waveData.daily &&
-                    waveData.daily.wave_height_max[1]}{' '}
-                  m
-                </h3>
-                <p>max wave height ( {date} )</p>
+        </div>
+      </header>
+
+      <div className="wrapper bigContainer">
+        <div className="contentContainer wavesContainer">
+          <h2 id="waves">waves</h2>
+          <div className="bubbleContainer">
+            <p>wave height - past & next 24h</p>
+            <div className="chartContainer">
+              <MyLineChart
+                data={waveChartData}
+                legend={'wave height'}
+                unit={'m'}
+                dataKey={'waveHeight'}
+              />
+            </div>
+            <div className="dataContainer">
+              <div className="dataContainer__data">
+                <Icons.PiWaves className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3>
+                    {' '}
+                    {data &&
+                      waveData.daily &&
+                      waveData.daily.wave_height_max[1]}{' '}
+                    m
+                  </h3>
+                  <p>max wave height ( {date} )</p>
+                </div>
+              </div>
+              <div className="dataContainer__data">
+                <Icons.IoCompassOutline className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3>{waveDirection}</h3>
+                  <p>dominant wave direction ( {date} )</p>
+                </div>
               </div>
             </div>
-            <div className="dataContainer__data">
-              <Icons.IoCompassOutline className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3>{waveDirection}</h3>
-                <p>dominant wave direction ( {date} )</p>
+          </div>
+        </div>
+
+        <div className="contentContainer windContainer">
+          <h2 id="wind">wind</h2>
+          <div className="bubbleContainer">
+            <p>wind speed - past & next 24h</p>
+            <div className="chartContainer">
+              <MyLineChart
+                data={windChartData}
+                legend={'wind speed'}
+                unit={'km/h'}
+                dataKey={'windSpeed'}
+              />
+            </div>
+            <div className="dataContainer">
+              <div className="dataContainer__data">
+                <Icons.WiStrongWind className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3>
+                    {' '}
+                    {data &&
+                      data.daily &&
+                      data.daily.wind_speed_10m_max[1]}{' '}
+                    km/h
+                  </h3>
+                  <p>max wind speed ( {date} )</p>
+                </div>
+              </div>
+              <div className="dataContainer__data">
+                <Icons.IoCompassOutline className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3>{windDirection}</h3>
+                  <p>dominant wind direction ( {date} )</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="contentContainer rainContainer">
+          <h2 id="rain">rain</h2>
+          <div className="bubbleContainer">
+            <p>precipitation - past & next 24h</p>
+            <div className="chartContainer">
+              {' '}
+              <MyBarChart
+                data={precipitationChartData}
+                legend={'precipitation'}
+                unit={'mm'}
+                dataKey={'precipitation'}
+              />
+            </div>
+            <div className="dataContainer">
+              <div className="dataContainer__data">
+                <Icons.WiRain className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3>
+                    {' '}
+                    {data && data.daily && data.daily.precipitation_sum[1]} mm
+                  </h3>
+                  <p>precipitation sum ( {date} )</p>
+                </div>
+              </div>
+              <div className="dataContainer__data">
+                <Icons.WiTime4 className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3>
+                    {' '}
+                    {data && data.daily && data.daily.precipitation_sum[1]} hrs
+                  </h3>
+                  <p>precipitation hours ( {date} )</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="contentContainer temperatureContainer">
+          <h2 id="temperature">temperature</h2>
+          <div className="bubbleContainer">
+            <p>temperature - past & next 24h</p>
+            <div className="chartContainer">
+              <MyLineChart
+                data={temperatureChartData}
+                legend={'temperature'}
+                unit={'°C'}
+                dataKey={'temperature'}
+              />
+            </div>
+            <div className="dataContainer">
+              <div className="dataContainer__data">
+                <Icons.WiThermometer className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3>
+                    max {data && data.daily && data.daily.temperature_2m_max[1]}{' '}
+                    °C
+                  </h3>
+                  <p>highest temperature ( {date} )</p>
+                </div>
+              </div>
+              <div className="dataContainer__data">
+                <Icons.WiThermometer className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3>
+                    {' '}
+                    min {data &&
+                      data.daily &&
+                      data.daily.temperature_2m_min[1]}{' '}
+                    °C
+                  </h3>
+                  <p>lowest temperature ( {date} )</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="contentContainer sunContainer">
+          <h2 id="sun">sun</h2>
+          <div className="bubbleContainer">
+            <div className="dataContainer">
+              <div className="dataContainer__data">
+                <Icons.WiSunrise className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3>
+                    {' '}
+                    {data && data.daily && data.daily.sunrise[1].split('T')[1]}
+                  </h3>
+                  <p>todays sunrise</p>
+                </div>
+              </div>
+              <div className="dataContainer__data">
+                <Icons.WiSunset className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3>
+                    {' '}
+                    {data && data.daily && data.daily.sunset[1].split('T')[1]}
+                  </h3>
+                  <p>todays sunset</p>
+                </div>
+              </div>
+              <div className="dataContainer__data">
+                <Icons.WiDaySunny className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3>{sunshineDuration}</h3>
+                  <p>todays sunshine duration</p>
+                </div>
+              </div>
+              <div className="dataContainer__data">
+                <Icons.BsSunglasses className="dataContainer__icon" />
+                <div className="dataContainer__text">
+                  <h3> {data && data.daily && data.daily.uv_index_max[1]}</h3>
+                  <p>todays UV-index</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="windContainer">
-        <h2 id="wind">wind</h2>
-        <div className="bubbleContainer">
-          <p>wind speed - past & next 24h</p>
-          <div className="chartContainer">
-            <MyLineChart
-              data={windChartData}
-              legend={'wind speed'}
-              unit={'km/h'}
-              dataKey={'windSpeed'}
-            />
-          </div>
-          <div className="dataContainer">
-            <div className="dataContainer__data">
-              <Icons.WiStrongWind className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3>
-                  {' '}
-                  {data && data.daily && data.daily.wind_speed_10m_max[1]} km/h
-                </h3>
-                <p>max wind speed ( {date} )</p>
-              </div>
-            </div>
-            <div className="dataContainer__data">
-              <Icons.IoCompassOutline className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3>{windDirection}</h3>
-                <p>dominant wind direction ( {date} )</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="rainContainer">
-        <h2 id="rain">rain</h2>
-        <div className="bubbleContainer">
-          <p>precipitation - past & next 24h</p>
-          <div className="chartContainer">
-            {' '}
-            <MyBarChart
-              data={precipitationChartData}
-              legend={'precipitation'}
-              unit={'mm'}
-              dataKey={'precipitation'}
-            />
-          </div>
-          <div className="dataContainer">
-            <div className="dataContainer__data">
-              <Icons.WiRain className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3>
-                  {' '}
-                  {data && data.daily && data.daily.precipitation_sum[1]} mm
-                </h3>
-                <p>precipitation sum ( {date} )</p>
-              </div>
-            </div>
-            <div className="dataContainer__data">
-              <Icons.WiTime4 className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3>
-                  {' '}
-                  {data && data.daily && data.daily.precipitation_sum[1]} hrs
-                </h3>
-                <p>precipitation hours ( {date} )</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="temperatureContainer">
-        <h2 id="temperature">temperature</h2>
-        <div className="bubbleContainer">
-          <p>temperature - past & next 24h</p>
-          <div className="chartContainer">
-            <MyLineChart
-              data={temperatureChartData}
-              legend={'temperature'}
-              unit={'°C'}
-              dataKey={'temperature'}
-            />
-          </div>
-          <div className="dataContainer">
-            <div className="dataContainer__data">
-              <Icons.WiThermometer className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3>
-                  max {data && data.daily && data.daily.temperature_2m_max[1]}{' '}
-                  °C
-                </h3>
-                <p>highest temperature ( {date} )</p>
-              </div>
-            </div>
-            <div className="dataContainer__data">
-              <Icons.WiThermometer className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3>
-                  {' '}
-                  min {data &&
-                    data.daily &&
-                    data.daily.temperature_2m_min[1]}{' '}
-                  °C
-                </h3>
-                <p>lowest temperature ( {date} )</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="sunContainer">
-        <h2 id="sun">sun</h2>
-        <div className="bubbleContainer">
-          <div className="dataContainer">
-            <div className="dataContainer__data">
-              <Icons.WiSunrise className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3>
-                  {' '}
-                  {data && data.daily && data.daily.sunrise[1].split('T')[1]}
-                </h3>
-                <p>todays sunrise</p>
-              </div>
-            </div>
-            <div className="dataContainer__data">
-              <Icons.WiSunset className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3>
-                  {' '}
-                  {data && data.daily && data.daily.sunset[1].split('T')[1]}
-                </h3>
-                <p>todays sunset</p>
-              </div>
-            </div>
-            <div className="dataContainer__data">
-              <Icons.WiDaySunny className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3>{sunshineDuration}</h3>
-                <p>todays sunshine duration</p>
-              </div>
-            </div>
-            <div className="dataContainer__data">
-              <Icons.BsSunglasses className="dataContainer__icon" />
-              <div className="dataContainer__text">
-                <h3> {data && data.daily && data.daily.uv_index_max[1]}</h3>
-                <p>todays UV-index</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <footer className="wrapper footer">
+        <p className="footer__tom">
+          Made with 💙 by{' '}
+          <a href="https://www.tomkra.dev" target="_blank">
+            Tom Kra
+          </a>
+        </p>
+        <p className="footer__credit">
+          Data by{' '}
+          <a href="https://open-meteo.com/" target="_blank">
+            Open-Meteo API
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }

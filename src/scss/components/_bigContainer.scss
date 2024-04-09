@@ -1,0 +1,8 @@
+@use '../util/' as u;
+
+.bigContainer {
+  display: flex;
+  flex-direction: column;
+  gap: u.rem(20);
+  padding-inline: u.rem(20);
+}
