@@ -315,13 +315,13 @@ function App() {
       <footer className="wrapper footer">
         <p className="footer__tom">
           Made with 💙 by{' '}
-          <a href="https://www.tomkra.dev" target="_blank">
+          <a href="https://www.tomkra.dev" target="_blank" rel="noreferrer">
             Tom Kra
           </a>
         </p>
         <p className="footer__credit">
           Data by{' '}
-          <a href="https://open-meteo.com/" target="_blank">
+          <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">
             Open-Meteo API
           </a>
         </p>
