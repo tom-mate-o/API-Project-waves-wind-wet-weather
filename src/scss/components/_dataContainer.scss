@@ -1,6 +1,7 @@
 @use '../util/' as u;
 
 .dataContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: u.rem(10);
@@ -20,5 +21,10 @@
 
   &__text {
     text-align: left;
+  }
+
+  &__date {
+    margin-block-start: u.rem(3);
+    font-size: u.rem(10);
   }
 }

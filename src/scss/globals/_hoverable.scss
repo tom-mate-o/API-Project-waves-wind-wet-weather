@@ -1,0 +1,18 @@
+@use '../util/' as u;
+
+.hoverable {
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--hover);
+    text-shadow: none;
+    transform: scale(1.08);
+  }
+
+  @include u.breakpoint-down('small') {
+    &:hover {
+      transform: none;
+    }
+  }
+}

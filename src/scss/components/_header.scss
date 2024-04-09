@@ -13,11 +13,34 @@
   &__logoContainer {
     width: 100%;
     margin-bottom: u.rem(30);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    &__inline {
+      display: flex;
+      flex-direction: row;
+      gap: 0 u.rem(10);
+
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    @include u.breakpoint('large') {
+      width: 500px;
+    }
+
     h1 {
       text-align: left;
       color: var(--main-bg);
       text-shadow: 1px 0 var(--h-stroke), 0 1px var(--h-stroke2),
         -1px 0 var(--h-stroke), 0 -1px var(--h-stroke);
+
+      a {
+        color: inherit;
+        text-shadow: inherit;
+        text-decoration: none;
+      }
     }
   }
 

@@ -57,7 +57,8 @@ img {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-weight: 700;
   margin: 0;
   padding: 0;
@@ -72,20 +73,25 @@ h1 {
 
 h2 {
   font-size: 1.875rem;
-  font-size: clamp(1.875rem, 1.14rem + 0.47vw, 1.875rem);
+  font-size: clamp(1.875rem, 1.55rem + 1.41vw, 2.8125rem);
   line-height: 1;
   letter-spacing: 0.0625rem;
 }
 
 h3 {
   font-size: 0.9375rem;
-  font-size: clamp(0.9375rem, 1.14rem + 0.47vw, 1.875rem);
+  font-size: clamp(0.9375rem, 0.83rem + 0.47vw, 1.25rem);
+}
+
+h4 {
+  font-size: 0.9375rem;
+  font-size: clamp(0.9375rem, 0.83rem + 0.47vw, 1.25rem);
 }
 
 p {
   margin: 0;
-  font-size: 0.875rem;
-  font-size: clamp(0.875rem, 0.84rem + 0.19vw, 1rem);
+  font-weight: 300;
+  font-size: 0.8125rem;
 }
 
 a,
@@ -102,7 +108,9 @@ a:active {
   --tooltip-bg: hsla(225, 39%, 18%, 0.8);
   --h-stroke: #6fffe9;
   --h-stroke2: #00d1ff;
-  --gradient: linear-gradient(160deg, #6fffe9 20%, #00d1ff 40%);
+  --h-stroke3: #ffffff;
+  --hover: #6fffe9;
+  --gradient: linear-gradient(45deg, #6fffe9, #00657c);
   --link-color: hsl(0, 0%, 100%);
 }
 
@@ -229,6 +237,21 @@ a:active {
   color: var(--text-color-light);
 }
 
+.hoverable {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.hoverable:hover {
+  color: var(--hover);
+  text-shadow: none;
+  transform: scale(1.08);
+}
+@media (max-width: 43.74875em) {
+  .hoverable:hover {
+    transform: none;
+  }
+}
+
 .wrapper {
   width: min(100% - 3rem, 75rem);
   margin-inline: auto;
@@ -282,6 +305,7 @@ a:active {
 }
 
 .dataContainer {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
@@ -300,6 +324,10 @@ a:active {
 .dataContainer__text {
   text-align: left;
 }
+.dataContainer__date {
+  margin-block-start: 0.1875rem;
+  font-size: 0.625rem;
+}
 
 .header {
   display: flex;
@@ -315,11 +343,31 @@ a:active {
 .header__logoContainer {
   width: 100%;
   margin-bottom: 1.875rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.header__logoContainer__inline {
+  display: flex;
+  flex-direction: row;
+  gap: 0 0.625rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@media (min-width: 56.25em) {
+  .header__logoContainer {
+    width: 500px;
+  }
 }
 .header__logoContainer h1 {
   text-align: left;
   color: var(--main-bg);
   text-shadow: 1px 0 var(--h-stroke), 0 1px var(--h-stroke2), -1px 0 var(--h-stroke), 0 -1px var(--h-stroke);
+}
+.header__logoContainer h1 a {
+  color: inherit;
+  text-shadow: inherit;
+  text-decoration: none;
 }
 .header__locationContainer {
   border-radius: 15px;
@@ -351,10 +399,19 @@ a:active {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  transition: all 0.3s ease-in-out;
 }
 .contentContainer h2 {
   color: var(--main-bg);
   text-shadow: 1px 0 var(--h-stroke), 0 1px var(--h-stroke2), -1px 0 var(--h-stroke), 0 -1px var(--h-stroke);
+  transition: all 0.3s ease-in-out;
+}
+.contentContainer:hover {
+  transform: scale(1.03);
+}
+.contentContainer:hover h2 {
+  color: var(--hover);
+  text-shadow: none;
 }
 
 .bigContainer {
@@ -368,7 +425,7 @@ a:active {
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .bigContainer div {
+  .bigContainer .contentContainer {
     flex-basis: calc(50% - 1.25rem);
   }
 }

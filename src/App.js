@@ -103,9 +103,25 @@ function App() {
     <div className="wrapper App">
       <header className="header">
         <div className="header__logoContainer">
-          <h1>waves</h1>
-          <h1>wind &</h1>
-          <h1> wet weather?!</h1>
+          <h1 className="hoverable">
+            <a href="#waves">waves</a>
+          </h1>
+          <div className="header__logoContainer__inline">
+            <h1 className="hoverable">
+              <a href="#wind">wind</a>
+            </h1>
+
+            <h1 className="">&</h1>
+          </div>
+          <div className="header__logoContainer__inline">
+            <h1 className="hoverable">
+              <a href="#rain">wet</a>
+            </h1>
+            <h1 className="hoverable">
+              <a href="#temperature">weather</a>
+            </h1>
+            <h1 className="">?!</h1>
+          </div>
         </div>
 
         <div className="header__locationContainer">
@@ -121,7 +137,7 @@ function App() {
         <div className="contentContainer wavesContainer">
           <h2 id="waves">waves</h2>
           <div className="bubbleContainer">
-            <p>wave height - past & next 24h</p>
+            <h4>wave height - past & next 24h</h4>
             <div className="chartContainer">
               <MyLineChart
                 data={waveChartData}
@@ -141,14 +157,20 @@ function App() {
                       waveData.daily.wave_height_max[1]}{' '}
                     m
                   </h3>
-                  <p>max wave height ( {date} )</p>
+                  <p>
+                    max wave height{' '}
+                    <p className="dataContainer__date">( {date} )</p>
+                  </p>
                 </div>
               </div>
               <div className="dataContainer__data">
                 <Icons.IoCompassOutline className="dataContainer__icon" />
                 <div className="dataContainer__text">
                   <h3>{waveDirection}</h3>
-                  <p>dominant wave direction ( {date} )</p>
+                  <p>
+                    dominant wave direction{' '}
+                    <p className="dataContainer__date">( {date} )</p>
+                  </p>
                 </div>
               </div>
             </div>
@@ -158,7 +180,7 @@ function App() {
         <div className="contentContainer windContainer">
           <h2 id="wind">wind</h2>
           <div className="bubbleContainer">
-            <p>wind speed - past & next 24h</p>
+            <h4>wind speed - past & next 24h</h4>
             <div className="chartContainer">
               <MyLineChart
                 data={windChartData}
@@ -178,14 +200,20 @@ function App() {
                       data.daily.wind_speed_10m_max[1]}{' '}
                     km/h
                   </h3>
-                  <p>max wind speed ( {date} )</p>
+                  <p>
+                    max wind speed{' '}
+                    <p className="dataContainer__date">( {date} )</p>
+                  </p>
                 </div>
               </div>
               <div className="dataContainer__data">
                 <Icons.IoCompassOutline className="dataContainer__icon" />
                 <div className="dataContainer__text">
                   <h3>{windDirection}</h3>
-                  <p>dominant wind direction ( {date} )</p>
+                  <p>
+                    dominant wind direction{' '}
+                    <p className="dataContainer__date">( {date} )</p>
+                  </p>
                 </div>
               </div>
             </div>
@@ -195,7 +223,7 @@ function App() {
         <div className="contentContainer rainContainer">
           <h2 id="rain">rain</h2>
           <div className="bubbleContainer">
-            <p>precipitation - past & next 24h</p>
+            <h4>precipitation - past & next 24h</h4>
             <div className="chartContainer">
               {' '}
               <MyBarChart
@@ -213,7 +241,10 @@ function App() {
                     {' '}
                     {data && data.daily && data.daily.precipitation_sum[1]} mm
                   </h3>
-                  <p>precipitation sum ( {date} )</p>
+                  <p>
+                    precipitation sum{' '}
+                    <p className="dataContainer__date">( {date} )</p>
+                  </p>
                 </div>
               </div>
               <div className="dataContainer__data">
@@ -223,7 +254,10 @@ function App() {
                     {' '}
                     {data && data.daily && data.daily.precipitation_sum[1]} hrs
                   </h3>
-                  <p>precipitation hours ( {date} )</p>
+                  <p>
+                    precipitation hours{' '}
+                    <p className="dataContainer__date">( {date} )</p>
+                  </p>
                 </div>
               </div>
             </div>
@@ -233,7 +267,7 @@ function App() {
         <div className="contentContainer temperatureContainer">
           <h2 id="temperature">temperature</h2>
           <div className="bubbleContainer">
-            <p>temperature - past & next 24h</p>
+            <h4>temperature - past & next 24h</h4>
             <div className="chartContainer">
               <MyLineChart
                 data={temperatureChartData}
@@ -250,7 +284,10 @@ function App() {
                     max {data && data.daily && data.daily.temperature_2m_max[1]}{' '}
                     °C
                   </h3>
-                  <p>highest temperature ( {date} )</p>
+                  <p>
+                    highest temperature{' '}
+                    <p className="dataContainer__date">( {date} )</p>
+                  </p>
                 </div>
               </div>
               <div className="dataContainer__data">
@@ -263,7 +300,10 @@ function App() {
                       data.daily.temperature_2m_min[1]}{' '}
                     °C
                   </h3>
-                  <p>lowest temperature ( {date} )</p>
+                  <p>
+                    lowest temperature{' '}
+                    <p className="dataContainer__date">( {date} )</p>
+                  </p>
                 </div>
               </div>
             </div>
